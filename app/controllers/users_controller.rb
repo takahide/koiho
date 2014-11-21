@@ -11,6 +11,12 @@ class UsersController < ApplicationController
     @post_id = params[:post_id]
 
     @posts = Post.where(username: @username).order("created_at DESC")
+
+    unless @user
+      @user = twitter.user(@username)
+      return
+    end
+
     @user = User.where(username: @username)[0]
     updated_at = Time.parse(@user.updated_at.to_s)
     now = Time.now
@@ -18,9 +24,6 @@ class UsersController < ApplicationController
       user = twitter.user(@username)
       User.update @user.id, profile_image_url: user.profile_image_url.to_s, name: user.name, location: user.location, description: user.description, friends_count: user.friends_count, followers_count: user.followers_count
       @user = User.find @user.id
-    end
-    unless @user
-      @user = twitter.user(@username)
     end
   end
 
