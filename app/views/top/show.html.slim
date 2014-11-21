@@ -1,0 +1,60 @@
+#post-detail.popup.popup-about
+  .list-block.sortable.media-list
+
+.statusbar-overlay
+.panel-overlay
+.panel.panel-left.panel-reveal
+  .content-block
+    ul#menu
+      - for r in 0..5 do
+        li.menu.close-panel
+          a.detail href="/races" onclick=""
+            = image_tag "post.png", class: "image", size: "20x20"
+            span.name hogehoge
+
+.panel.panel-right.panel-reveal
+  .content-block
+    ul#menu
+      li.menu.active bit="date"
+        a href="#" 日付
+      li.menu.active bit="raceName"
+        a href="#" レース名
+      li.menu.active bit="jockey"
+        a href="#" 騎手
+      li.menu.active bit="rank"
+        a href="#" 着順
+
+.views
+  .view.view-main
+    .navbar#nav
+      .navbar-inner
+        .left
+          a.link.open-panel href="#" レース選択
+        .center.sliding.nav-title.open-popup koiho.com 
+        .right
+          a.link.open-panel href="#" data-panel="right" 表示切替
+    .pages.navbar-through.toolbar-through
+      .view-cover style="position: absolute; top: 0; left: 0; width: 100%; height: 2000px; background: rgba(255, 255, 255, 1); z-index:10000; display: none;"
+      .page data-page="index"
+        .page-content.hide-navbar-on-scroll#top
+          .slider-container
+            .slider-pagination
+            .slider-wrapper
+              - @players.each_with_index do |h, i|
+                .slider-slide.outer-slider
+                  .horse
+                    .main-info
+                      .jockey-image
+
+                      .number-name
+                        span.name.horse-name 松山弘平
+                        .data
+                          .option.trainer 詳細データ
+                    .races
+                      div class="detail-slider-container#{i}"
+                        .slider-wrapper
+                          - for r in 0..10 do
+                            .slider-slide.inner-slider
+                              .race
+                                .bit.date @carp_joshi あーーー松山44番ってかー。
+

@@ -1,0 +1,4 @@
+= form_for @question do |f|
+  = f.text_field :text
+  = f.text_field :username, value: current_user.username, readonly: true
+  = f.submit

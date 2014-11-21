@@ -1,0 +1,243 @@
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+body {
+  font-family:'Lucida Grande', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, sans-serif;
+}
+
+#post-detail {
+  background: rgba(0, 0, 0, 0.6);
+  margin-top: 44px;
+  .hidden {
+    display: none;
+  }
+  .title {
+    color: #fff;
+    margin-top: -20px;
+    padding-bottom: 10px;
+  }
+  .body {
+    background: rgba(255, 255, 255, 0.9);
+    border: solid 2px #c00;
+    margin: 20px 0;
+    padding: 10px 10px;
+    color: #333;
+    line-height: 140%;
+    margin: 7px 0 7px;
+    .image {
+      width: 50%;
+      border: solid 2px #fff;
+      float: left;
+    }
+  }
+}
+
+#nav {
+  background: rgba(255, 0, 0, .92);
+  color: #fff;
+  border-bottom: solid 1px #000;
+  a.link {
+    color: #fff;
+  }
+}
+
+#top {
+  a.item-link.item-content.post.open-popup {
+    background: #fff;
+    cursor: pointer;
+  }
+  background: #fff;
+  .left {
+    width: 100%;
+    .uniform {
+      color: #f00;
+      font-family: Impact, Charcoal, sans-serif;
+      text-align: center;
+      padding: 15px;
+      .name {
+        font-size: 36px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        -webkit-text-stroke: 1.4px #000;
+      }
+      .number {
+        display: inline-block;
+        background: url(backnumber.png);
+        width: 41px;
+        height: 74px;
+        margin: 0 2px;
+        background-size: 600%;
+        font-size: 60px;
+        -webkit-text-stroke: 1px #000;
+        &.n1 {
+          width: 32px;
+          background-size: 775%;
+          background-position: 4% 0;
+        }
+        &.n2 {
+          background-position: 26% 0;
+        }
+        &.n3 {
+          background-position: 50% 0;
+        }
+        &.n4 {
+          background-position: 74% 0;
+        }
+        &.n5 {
+          background-position: 97% 0;
+        }
+        &.n6 {
+          background-position: 2% 100%;
+        }
+        &.n7 {
+          background-position: 26% 100%;
+        }
+        &.n8 {
+          background-position: 50% 100%;
+        }
+        &.n9 {
+          background-position: 74% 100%;
+        }
+        &.n0 {
+          background-position: 97% 100%;
+        }
+      }
+    }
+    .header {
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .right {
+    background: #eee;
+    .title {
+      padding: 20px 10px;
+      color: #fff;
+    }
+  }
+  .item-text {
+    margin-top: 10px;
+  }
+}
+
+#menu {
+  .menu {
+    padding: 10px;
+    border-bottom: solid 1px #333;
+    .number {
+      width: 9px;
+      height: 15px;
+      margin-left: 5px;
+      color: #f00;
+    }
+    .name {
+      margin-left: 5px;
+      color: #fff;
+    }
+    .face {
+      margin-left: 5px;
+    }
+  }
+}
+
+#details {
+  background: #000;
+  color: #fff;
+  .img {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+  .points {
+    width: 90%;
+    margin: 10px auto;
+    background: #060;
+    td.head {
+      font-size: 80%;
+    }
+    td {
+      padding: 5px;
+      text-align: center;
+      border: solid 1px #050;
+    }
+  }
+  .score {
+    width: 90%;
+    margin: 20px auto;
+    .player {
+      .position {
+        font-size: 80%;
+      }
+      .hit1 {
+        color: #cdf;
+      }
+      .hit2, .hit3, .hit4, .hit5 {
+        color: #fbb;
+      }
+    }
+  }
+}
+
+#top {
+  .viewport {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    -webkit-transform: translateZ(0); /* Optional: When heavy at iOS6+ */
+  }
+
+  .item {
+    float: left;
+    width: 280px;
+    margin: 0 10px;
+  }
+
+  .item img {
+    border: solid 2px #333;
+  }
+}
+
+@media (min-width: 630px) {
+  #post-detail {
+    margin-top: -300px;
+  }
+  #top {
+    .left {
+      width: 50%;
+      float: left;
+    }
+    .right {
+      width: 50%;
+      float: left;
+      .player {
+        width: 25%;
+      }
+    }
+  }
+}
+
+.status-bar { 
+  background: #000;
+  position: absolute;
+  display: none;
+  height: 1px;
+  width: 100%;
+  -webkit-animation: bar .5s ease 0.5s 1 normal; 
+}
+
+@-webkit-keyframes bar {
+  0% {
+    background: #FF00FF;
+    width: 0%;
+  }
+  50% {
+    background: #FFFF00;
+    width: 50%;
+  }
+  100% {
+    background: #AFEEEE;
+    width: 100%;
+  }
+}

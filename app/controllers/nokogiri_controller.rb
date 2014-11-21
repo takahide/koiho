@@ -1,0 +1,2 @@
+class NokogiriController < ApplicationController
+end
