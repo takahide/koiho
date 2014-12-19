@@ -1,14 +1,14 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: comments
 #
 #  id         :integer          not null, primary key
-#  title      :string(255)
-#  body       :text
-#  username   :string(255)
+#  video_id   :integer
+#  text       :text
 #  created_at :datetime
 #  updated_at :datetime
+#  user_id    :integer
 #
 
-class Post < ActiveRecord::Base
+class Comment < ActiveRecord::Base
 end

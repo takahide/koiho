@@ -18,6 +18,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-debugger'
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'hirb'
   gem 'hirb-unicode'
 end

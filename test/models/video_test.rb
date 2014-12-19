@@ -1,18 +1,19 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: videos
 #
 #  id         :integer          not null, primary key
-#  title      :string(255)
-#  body       :text
-#  username   :string(255)
+#  youtube_id :string(255)
+#  like       :integer
+#  dislike    :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  title      :string(255)
 #
 
 require 'test_helper'
 
-class PostTest < ActiveSupport::TestCase
+class VideoTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

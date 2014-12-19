@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Youtube:
+  = @video.youtube_id
+p
+  strong Like:
+  = @video.like
+p
+  strong Dislike:
+  = @video.dislike
+
+= link_to 'Edit', edit_video_path(@video)
+'|
+= link_to 'Back', videos_path

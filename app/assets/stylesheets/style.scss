@@ -11,6 +11,15 @@ body {
   .hidden {
     display: none;
   }
+  .comments {
+    ul {
+      a.item-link.item-content {
+        &:hover {
+          background: grba(0, 0, 0, 0);
+        }
+      }
+    }
+  }
   .title {
     color: #fff;
     margin-top: -20px;
@@ -19,15 +28,30 @@ body {
   .body {
     background: rgba(255, 255, 255, 0.9);
     border: solid 2px #c00;
-    margin: 20px 0;
     padding: 10px 10px;
     color: #333;
     line-height: 140%;
-    margin: 7px 0 7px;
     .image {
       width: 50%;
       border: solid 2px #fff;
       float: left;
+    }
+  }
+  .comment-form {
+    textarea {
+      border: solid 2px #c00;
+      width: 70%;
+      height: 50px;
+      display: inline-block;
+    }
+    .submit {
+      margin-left: 10px;
+      width: 20%;
+      height: 50px;
+      border-style: none;
+      background-color: #f00;
+      color: #fff;
+      display: inline-block;
     }
   }
 }
@@ -52,59 +76,6 @@ body {
   background: #fff;
   .left {
     width: 100%;
-    .uniform {
-      color: #f00;
-      text-align: center;
-      padding: 15px;
-      .name {
-        font-family: 'Anton', sans-serif;
-        font-size: 37px;
-        letter-spacing: 2px;
-        -webkit-text-stroke: 1.4px #000;
-      }
-      .number {
-        display: inline-block;
-        background: url(backnumber.png);
-        width: 41px;
-        height: 74px;
-        margin: 0 2px;
-        background-size: 600%;
-        font-size: 60px;
-        -webkit-text-stroke: 1px #000;
-        &.n1 {
-          width: 32px;
-          background-size: 775%;
-          background-position: 4% 0;
-        }
-        &.n2 {
-          background-position: 26% 0;
-        }
-        &.n3 {
-          background-position: 50% 0;
-        }
-        &.n4 {
-          background-position: 74% 0;
-        }
-        &.n5 {
-          background-position: 97% 0;
-        }
-        &.n6 {
-          background-position: 2% 100%;
-        }
-        &.n7 {
-          background-position: 26% 100%;
-        }
-        &.n8 {
-          background-position: 50% 100%;
-        }
-        &.n9 {
-          background-position: 74% 100%;
-        }
-        &.n0 {
-          background-position: 97% 100%;
-        }
-      }
-    }
     .header {
       img {
         width: 100%;
@@ -112,9 +83,10 @@ body {
     }
   }
   .right {
-    background: #eee;
-    .title {
+    background: #333;
+    .theme {
       padding: 20px 10px;
+      font-size: 110%;
       color: #fff;
     }
   }
@@ -123,6 +95,59 @@ body {
   }
 }
 
+.uniform {
+  color: #f00;
+  text-align: center;
+  padding: 15px;
+  .name {
+    font-family: 'Anton', sans-serif;
+    font-size: 37px;
+    letter-spacing: 2px;
+    -webkit-text-stroke: 1.4px #000;
+  }
+  .number {
+    display: inline-block;
+    background: url(backnumber.png);
+    width: 41px;
+    height: 74px;
+    margin: 0 2px;
+    background-size: 600%;
+    font-size: 60px;
+    -webkit-text-stroke: 1px #000;
+    &.n1 {
+      width: 32px;
+      background-size: 775%;
+      background-position: 4% 0;
+    }
+    &.n2 {
+      background-position: 26% 0;
+    }
+    &.n3 {
+      background-position: 50% 0;
+    }
+    &.n4 {
+      background-position: 74% 0;
+    }
+    &.n5 {
+      background-position: 97% 0;
+    }
+    &.n6 {
+      background-position: 2% 100%;
+    }
+    &.n7 {
+      background-position: 26% 100%;
+    }
+    &.n8 {
+      background-position: 50% 100%;
+    }
+    &.n9 {
+      background-position: 74% 100%;
+    }
+    &.n0 {
+      background-position: 97% 100%;
+    }
+  }
+}
 #menu {
   .menu {
     padding: 10px;
@@ -244,3 +269,4 @@ body {
     width: 100%;
   }
 }
+

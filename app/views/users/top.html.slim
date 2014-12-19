@@ -5,6 +5,10 @@
       .title #{p.title}
       .body #{simple_format(p.body)}
       .close-popup 閉じる
+      .comment-form
+        = form_tag '/comment', post: :put
+          = text_area :comment, :body
+          = submit_tag "投稿", class: "submit"
 .statusbar-overlay
 .panel-overlay
 .panel.panel-left.panel-reveal
@@ -64,6 +68,6 @@
                       .item-inner
                         .item-title-row 
                           .item-title #{p.title}
-                        .item-text #{p.body.gsub(/(<.*?>)/, "").gsub(/(<.*?>)/, "")}
+                        .item-text #{p.body}
                     .sortable-handler
           .sortable-handler

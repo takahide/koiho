@@ -1,23 +1,21 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: comments
 #
 #  id         :integer          not null, primary key
-#  title      :string(255)
-#  body       :text
-#  username   :string(255)
+#  video_id   :integer
+#  text       :text
 #  created_at :datetime
 #  updated_at :datetime
+#  user_id    :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  body: MyString
-  username: MyString
+  video_id: 1
+  text: MyText
 
 two:
-  title: MyString
-  body: MyString
-  username: MyString
+  video_id: 1
+  text: MyText

@@ -1,18 +1,18 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: comments
 #
 #  id         :integer          not null, primary key
-#  title      :string(255)
-#  body       :text
-#  username   :string(255)
+#  video_id   :integer
+#  text       :text
 #  created_at :datetime
 #  updated_at :datetime
+#  user_id    :integer
 #
 
 require 'test_helper'
 
-class PostTest < ActiveSupport::TestCase
+class CommentTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

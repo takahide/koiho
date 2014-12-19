@@ -1,7 +1,6 @@
 class TopController < ApplicationController
   def show
-    authenticate_user!
-    @players = ["a", "b", "c", "d"]
-    @username = current_user.username
+    @users = User.all
+    @videos = Video.all
   end
 end

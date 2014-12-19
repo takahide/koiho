@@ -1,23 +1,24 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: videos
 #
 #  id         :integer          not null, primary key
-#  title      :string(255)
-#  body       :text
-#  username   :string(255)
+#  youtube_id :string(255)
+#  like       :integer
+#  dislike    :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  title      :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  body: MyString
-  username: MyString
+  youtube_id: MyString
+  like: 
+  dislike: 
 
 two:
-  title: MyString
-  body: MyString
-  username: MyString
+  youtube_id: MyString
+  like: 
+  dislike: 
