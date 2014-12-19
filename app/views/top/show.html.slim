@@ -49,7 +49,7 @@
       .page data-page="index"
         .page-content#top
           .left
-            = image_tag "koiho.png"
+            iframe title="YouTube video player" class="youtube-player" type="text/html" width="560" height="345" src="http://www.youtube.com/embed/9YEEl52u8XE?autoplay=1" frameborder="0"
           .right
             p.theme 話題の動画
             .list-block.media-list
@@ -58,7 +58,6 @@
                   li
                     a.item-link.item-content.post.open-popup
                       .item-media
-                        iframe title="YouTube video player" class="youtube-player" type="text/html" width="560" height="345" src="http://www.youtube.com/embed/9YEEl52u8XE?autoplay=1" frameborder="0"
                         = image_tag "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg"
                       .item-inner
                         .item-title-row
