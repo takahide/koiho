@@ -22,3 +22,7 @@ $ ->
 
   $("body").on "click", ".post", ->
     page.setPost $(@).attr("post")
+
+  $("body").on "click", ".video-post", ->
+    $(".status-bar").show()
+    $(".youtube").html('<iframe width="100%" height="200" src="//www.youtube.com/embed/' + $(@).attr("video-id") + '" frameborder="0" allowfullscreen></iframe>')

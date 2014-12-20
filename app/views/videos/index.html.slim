@@ -4,6 +4,7 @@ table
   thead
     tr
       th Youtube
+      th Title
       th Like
       th Dislike
       th
@@ -14,6 +15,7 @@ table
     - @videos.each do |video|
       tr
         td = video.youtube_id
+        td = video.title
         td = video.like
         td = video.dislike
         td = link_to 'Show', video

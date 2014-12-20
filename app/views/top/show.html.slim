@@ -1,16 +1,10 @@
 #post-detail.popup.popup-about
-  iframe width="250" height="150" src="//www.youtube.com/embed/hogehogehoge" frameborder="0" allowfullscreen"
-  .list-block.media-list.comments
-    ul
-      - for v in @videos do
-        li
-          a.item-link.item-content.post.open-popup
-            .item-media
-              = image_tag "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg"
-            .item-inner
-              .item-title-row
-                .item-title @carp_joshi
-              .item-text コメントコメント 
+  .status-bar
+  .youtube
+  a.button.button-fill.button-big.color-red.fav お気に入りに追加
+  p.exp お気に入り追加にはTwitterログインが必要です。
+  p.exp ※Twitterログインにより許可なく投稿が発生することはありません。
+
 
 .statusbar-overlay
 .panel-overlay
@@ -49,14 +43,13 @@
       .page data-page="index"
         .page-content#top
           .left
-            iframe title="YouTube video player" class="youtube-player" type="text/html" width="560" height="345" src="http://www.youtube.com/embed/9YEEl52u8XE?autoplay=1" frameborder="0"
           .right
             p.theme 話題の動画
             .list-block.media-list
               ul
                 - for v in @videos do
                   li
-                    a.item-link.item-content.post.open-popup
+                    a.item-link.item-content.video-post.open-popup video-id="#{v.youtube_id}"
                       .item-media
                         = image_tag "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg"
                       .item-inner
