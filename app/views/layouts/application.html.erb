@@ -8,16 +8,9 @@
   <% end %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device    -width,initial-scale=1.0,user-scalable=no">
-  <link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
-<script>
-function twitter() {
-  location.href="<%= user_omniauth_authorize_path(:twitter) %>";
-}
-</script>
-
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
   <% end %>
@@ -25,5 +18,6 @@ function twitter() {
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
 <%= yield %>
+<script src="/my-app.js"></script>
 </body>
 </html>

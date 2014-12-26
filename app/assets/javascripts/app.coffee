@@ -12,7 +12,17 @@ class Page
 
 page = new Page()
 
+
+video_id = 0
+
 $ ->
+  #これ書けばajaxが動く。でも現状GETが追加で一回多く発生してる。
+  $("a[data-update]")
+    .on "ajax:success", (data, status, xhr) ->
+      $($(@).attr("data-update")).html status
+  
+
+
   setTimeout ->
     defaultPost = parseInt($("#post-detail").attr("default"))
     if defaultPost > 0
@@ -24,5 +34,6 @@ $ ->
     page.setPost $(@).attr("post")
 
   $("body").on "click", ".video-post", ->
+    video_id = $(@).attr("video-id")
     $(".status-bar").show()
-    $(".youtube").html('<iframe width="100%" height="200" src="//www.youtube.com/embed/' + $(@).attr("video-id") + '" frameborder="0" allowfullscreen></iframe>')
+    $(".youtube").html('<iframe width="100%" height="200" src="//www.youtube.com/embed/' + $(@).attr("youtube-id") + '" frameborder="0" allowfullscreen></iframe>')

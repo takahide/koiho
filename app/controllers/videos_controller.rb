@@ -1,4 +1,5 @@
 class VideosController < ApplicationController
+  layout "plain"
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
   # GET /videos

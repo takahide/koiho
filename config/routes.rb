@@ -1,13 +1,14 @@
 Threeout::Application.routes.draw do
   resources :comments
-
   resources :videos
-
   resources :posts
 
   devise_for :users, path_names: { sign_in: "login", sign_out: "logout"}, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
   get '/', to: 'top#show'
+  get '/v/:id', to: 'top#show'
+  get '/like/:video_id', to: "likes#create"
+  get '/who/:video_id', to: "likes#who"
   resources :questions
   resources :videos
   resources :comments
