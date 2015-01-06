@@ -37,3 +37,6 @@ $ ->
     video_id = $(@).attr("video-id")
     $(".status-bar").show()
     $(".youtube").html('<iframe width="100%" height="200" src="//www.youtube.com/embed/' + $(@).attr("youtube-id") + '" frameborder="0" allowfullscreen></iframe>')
+
+  $(document).on "click", ".color-red", ->
+    $(".color-red").removeClass("color-red").addClass("color-gray").addClass("open-popup").text("こいほー済み").removeAttr("data-remote").removeAttr("data-method").removeAttr("href")

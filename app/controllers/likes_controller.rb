@@ -12,7 +12,7 @@ class LikesController < ApplicationController
   def who
     video_id = params[:video_id]
     before = "<a class='button button-fill button-big color-red like' data-method='GET' data-remote='true' data-type='html' data-update='.like-area' href='like/#{video_id}'>この動画にこいほーする</a>"
-    after = "<a class='button button-fill button-big color-gray like'>こいほー済み</a>"
+    after = "<a class='button button-fill button-big color-gray like close-popup'>こいほー済み</a>"
     if user_signed_in?
       if Like.where(user_id: current_user.id, video_id: video_id).size >= 1
         @a = after

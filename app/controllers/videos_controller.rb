@@ -1,3 +1,7 @@
+require 'nokogiri'
+require 'open-uri'
+require 'kconv'
+
 class VideosController < ApplicationController
   layout "plain"
   before_action :set_video, only: [:show, :edit, :update, :destroy]
@@ -26,6 +30,10 @@ class VideosController < ApplicationController
   # POST /videos.json
   def create
     @video = Video.new(video_params)
+
+    html = open("https://www.youtube.com/watch?v=#{@video.youtube_id}").read
+    doc = Nokogiri::HTML(html.toutf8, nil, 'utf-8')
+    @video.title = doc.css("#eow-title").text.squish
 
     respond_to do |format|
       if @video.save

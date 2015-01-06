@@ -1,7 +1,7 @@
 #post-detail.popup.popup-about
   .status-bar
   .youtube
-  .white
+  .white.close-popup
     .like-area
 
 .statusbar-overlay
@@ -11,7 +11,7 @@
     ul.menu
       - for u in @users do
         li.menu.close-panel
-          a.detail href="/races" onclick=""
+          a.detail href="/#{u.username}" onclick=""
             = image_tag u.profile_image_url, class: "image", size: "20x20"
             span.name #{u.username}
 

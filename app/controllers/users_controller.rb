@@ -1,6 +1,19 @@
 class UsersController < ApplicationController
   def top
+    unless signed_in?
+      redirect_to user_omniauth_authorize_path(:twitter)
+      return
+    end
+
+    twitter = Twitter::REST::Client.new do |config|
+      config.consumer_key = "xXLIao0TrTyx2ZeXg2eNBygPw"
+      config.consumer_secret = "HJHc76kF6CqASNH0xrTDLQyoCR0lSU68TPwLb8Ix34bGyOYSKz"
+      config.access_token = current_user.token
+      config.access_token_secret = current_user.secret
+    end
+
     @username = params[:username]
+
     @post_id = params[:post_id]
 
     @posts = Post.where(username: @username).order("created_at DESC")
