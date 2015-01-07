@@ -6,8 +6,16 @@ body {
 }
 
 #post-detail {
-  background: rgba(0, 0, 0, 0.6);
-  margin-top: 44px;
+  background: rgba(0, 0, 0, 0.4);
+  .close {
+    text-align: right;
+    color: white;
+    height: 38px;
+    padding-top: 5px;
+    padding-right: 8px;
+    font-size: 160%;
+    cursor: pointer;
+  }
   .youtube {
     width: 90%;
     margin: 20px auto;

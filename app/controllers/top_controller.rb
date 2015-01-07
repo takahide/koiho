@@ -1,9 +1,9 @@
 class TopController < ApplicationController
   def show
-    video_id = params[:id]
     username = params[:username]
-    if video_id
-      featured_video = Video.find video_id
+    youtube_id = params[:youtube_id]
+    if youtube_id
+      featured_video = Video.find_by_youtube_id youtube_id
       @featured_video_html = '<iframe width="100%" height="200" src="//www.youtube.com/embed/' + featured_video.youtube_id  + '" frameborder="0" allowfullscreen></iframe>'
     end
     if username

@@ -1,42 +1,24 @@
-class Page
-  _post = 1
-  setPost: (id) ->
-    $(".detail#{_post}").addClass "hidden"
-    _post = parseInt id
-    $(".status-bar").show()
-    setTimeout ->
-      $(".detail#{_post}").removeClass "hidden"
-    , 1000
-  getPost: ->
-    return _post
-
-page = new Page()
-
-
-video_id = 0
+previous_url = ""
 
 $ ->
   #これ書けばajaxが動く。でも現状GETが追加で一回多く発生してる。
   $("a[data-update]")
     .on "ajax:success", (data, status, xhr) ->
       $($(@).attr("data-update")).html status
-  
-
-
-  setTimeout ->
-    defaultPost = parseInt($("#post-detail").attr("default"))
-    if defaultPost > 0
-      myApp.popup('<div id="post-detail" class="popup popup-about">' + $("#post-detail").html() + '</div>')
-      page.setPost defaultPost
-  , 1000
 
   $("body").on "click", ".post", ->
-    page.setPost $(@).attr("post")
 
   $("body").on "click", ".video-post", ->
-    video_id = $(@).attr("video-id")
+    previous_url = location.href
+    youtube_id = $(@).attr("youtube-id")
     $(".status-bar").show()
-    $(".youtube").html('<iframe width="100%" height="200" src="//www.youtube.com/embed/' + $(@).attr("youtube-id") + '" frameborder="0" allowfullscreen></iframe>')
+    $(".youtube").html('<iframe width="100%" height="200" src="//www.youtube.com/embed/' + youtube_id + '" frameborder="0" allowfullscreen></iframe>')
+    window.history.pushState(null, null, "/v/#{youtube_id}");
 
   $(document).on "click", ".color-red", ->
     $(".color-red").removeClass("color-red").addClass("color-gray").addClass("open-popup").text("こいほー済み").removeAttr("data-remote").removeAttr("data-method").removeAttr("href")
+
+
+  $("body").on "click ", ".close-popup", ->
+    username = $(".nav-title").text().split("@")[1] || ""
+    window.history.pushState(null, null, "/#{username}");
