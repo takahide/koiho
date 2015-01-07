@@ -209,6 +209,16 @@ body {
   -webkit-animation: bar .5s ease 0.5s 1 normal; 
 }
 
+.title {
+  padding-top: 5px;
+  padding-left: 10px;
+  font-size: 90%;
+}
+
+.side {
+  margin-top: 15px;
+  color: #999;
+}
 
 @-webkit-keyframes bar {
   0% {

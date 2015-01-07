@@ -14,9 +14,11 @@ class TopController < ApplicationController
         @videos.push Video.find(l.video_id)
       end
       @title = "@#{username}"
+      @user = true
     else
       @videos = Video.all
       @title = "人気の動画"
+      @user = false
     end
     @users = User.all
   end

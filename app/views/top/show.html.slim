@@ -27,7 +27,10 @@
           = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "external"
       - else
         li
+          = image_tag "twitter.png", size: "30x30"
           = link_to "ログイン", user_omniauth_authorize_path(:twitter), class: "external"
+      - unless signed_in?
+        p.side こいほードットコムは、動画でつながるカープファン専用SNSです。Twitterアカウントのみでログインができます。また、アカウント連携により、許可なくツイートがされることは一切ありませんのでご安心ください。
 
 .views
   .view.view-main
@@ -35,9 +38,12 @@
       .navbar-inner
         .left
           a.link.open-panel href="#" ファン
-        .center.sliding.nav-title.open-popup = @title
+        .center.sliding.nav-title = @title
         .right
-          a.link.open-panel href="#" data-panel="right" 設定
+          - unless signed_in?
+            a.link.open-panel href="#" data-panel="right" 登録
+          - else
+            a.link.open-panel href="#" data-panel="right" 編集
     .pages.navbar-through.toolbar-through
       .view-cover style="position: absolute; top: 0; left: 0; width: 100%; height: 2000px; background: rgba(255, 255, 255, 1); z-index:10000; display: none;"
       .page data-page="index"
@@ -53,15 +59,14 @@
             .featured_video = raw(@featured_video_html)
             .content-block.searchbar-not-found 見つかりませんでした
             .list-block.media-list.list-block-search.searchbar-found
+              - if @user
+                p.title こいほーした動画
               ul
                 - for v in @videos do
                   li
                     a.item-link.item-content.open-popup.video-post data-method="GET" data-remote="true" data-type="html" data-update=".like-area" href="/who/#{v.id}" youtube-id="#{v.youtube_id}"
                       .item-media
-                        .uniform
-                          .number.n1
-                          .number.n1
-                        / = image_tag "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg", size: "90x60"
+                        = image_tag "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg", size: "90x60"
                       .item-inner
                         .item-title-row
                           .item-title #{v.title}
