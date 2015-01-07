@@ -34,7 +34,7 @@
       .navbar-inner
         .left
           a.link.open-panel href="#" ファン
-        .center.sliding.nav-title.open-popup 人気の動画 
+        .center.sliding.nav-title.open-popup = @title
         .right
           a.link.open-panel href="#" data-panel="right" 設定
     .pages.navbar-through.toolbar-through
@@ -57,7 +57,10 @@
                   li
                     a.item-link.item-content.open-popup.video-post data-method="GET" data-remote="true" data-type="html" data-update=".like-area" href="who/#{v.id}" youtube-id="#{v.youtube_id}"
                       .item-media
-                        = image_tag "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg", size: "90x60"
+                        .uniform
+                          .number.n1
+                          .number.n1
+                        / = image_tag "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg", size: "90x60"
                       .item-inner
                         .item-title-row
                           .item-title #{v.title}

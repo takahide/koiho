@@ -12,12 +12,13 @@ Threeout::Application.routes.draw do
   resources :questions
   resources :videos
   resources :comments
+
   get '/secret', to: 'users#secret'
   get '/secret2/:username', to: 'users#secret2'
   get '/secret3', to: 'users#secret3'
   get '/secret2/:username', to: 'users#secret2'
-  get '/:username', to: 'users#top'
-  get '/:username/:post_id', to: 'users#top'
+
+  get '/:username', to: 'top#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
