@@ -30,7 +30,7 @@
           = image_tag "twitter.png", size: "30x30"
           = link_to "ログイン", user_omniauth_authorize_path(:twitter), class: "external"
       - unless signed_in?
-        p.side こいほードットコムは、動画でつながるカープファン専用SNSです。Twitterアカウントのみでログインができます。また、アカウント連携により、許可なくツイートがされることは一切ありませんのでご安心ください。
+        p.side こいほードットコムは、動画でつながるカープファン専用SNSです。Twitterアカウントのみでログインができます。アカウント連携により、許可なくツイートがされることは一切ありませんのでご安心ください。
 
 .views
   .view.view-main
@@ -69,5 +69,6 @@
                         = image_tag "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg", size: "90x60"
                       .item-inner
                         .item-title-row
-                          .item-title #{v.title}
-                        .item-text #{v.title} 
+                          .span #{v.title} 
+
+                        .item-text #{v.like}人がこいほーしています。 
