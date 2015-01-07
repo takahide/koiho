@@ -221,6 +221,16 @@ body {
   color: #999;
 }
 
+.item-media {
+  img {
+    border: solid 1px #f00;
+  }
+}
+
+.item-title-row {
+  font-size: 90%;
+}
+
 @-webkit-keyframes bar {
   0% {
     background: #FF00FF;
