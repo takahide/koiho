@@ -52,6 +52,10 @@ body {
       background: rgba(244, 0, 0, .92);
     }
     color: #fff;
+    font-size: 90%;
+  }
+  .nav-title {
+    font-size: 85%;
   }
 }
 
@@ -224,12 +228,32 @@ body {
 .item-media {
   img {
     border: solid 1px #f00;
-    border-radius: 40px;
+    border-radius: 9px;
   }
 }
 
 .item-title-row {
   font-size: 90%;
+}
+
+.people {
+  width: 90%;
+  p {
+    color: #888;
+    margin-bottom: 5px;
+  }
+  img {
+    margin: 3px;
+    border: solid 1px #f00;
+  }
+}
+
+.user_profile {
+  color: #aaa;
+  .small {
+    margin-top: 5px;
+    font-size: 90%;
+  }
 }
 
 @-webkit-keyframes bar {

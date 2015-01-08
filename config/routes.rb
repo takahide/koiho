@@ -9,6 +9,7 @@ Threeout::Application.routes.draw do
   get '/v/:youtube_id', to: 'top#show'
   get '/like/:video_id', to: "likes#create"
   get '/who/:video_id', to: "likes#who"
+  get '/users/back', to: "users#back"
   resources :questions
   resources :videos
   resources :comments

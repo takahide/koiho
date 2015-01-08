@@ -12,7 +12,7 @@ $ ->
     $(".youtube").html('<iframe width="100%" height="200" src="//www.youtube.com/embed/' + youtube_id + '" frameborder="0" allowfullscreen></iframe>')
     window.history.pushState(null, null, "/v/#{youtube_id}");
 
-  $(document).on "click", ".color-red", ->
+  $(document).on "click", ".koiho", ->
     $(".color-red").removeClass("color-red").addClass("color-gray").addClass("open-popup").text("こいほー済み").removeAttr("data-remote").removeAttr("data-method").removeAttr("href")
 
 

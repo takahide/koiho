@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+  def back
+    if signed_in?
+      user = User.find current_user.id
+      user.koiho_name = params[:koiho_name]
+      user.back_number = params[:back_number]
+      user.save
+    end
+    redirect_to "/"
+  end
+
   def secret
     @username = current_user.username
     if @username != "carp_joshi"

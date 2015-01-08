@@ -1,4 +1,9 @@
 = raw @a
-- for l in @likes
-  a href="#{l.user.username}" src="#{l.user.profile_image_url}"
-= raw @explanation
+.people
+  p この動画にこいほーした人
+  - if @likes.size >= 1
+    - for l in @likes
+      a href="/#{l.user.username}"
+        = image_tag "#{l.user.profile_image_url}", size: "35x35"
+  - else
+    p まだいません。

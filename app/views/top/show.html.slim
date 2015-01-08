@@ -10,9 +10,14 @@
 .panel.panel-left.panel-reveal
   .content-block
     ul.menu
+      - if @user
+        li.menu.close-panel
+          a.detail href="/"
+            = image_tag "favicon.png", class: "image", size: "20x20"
+            span.name 人気の動画
       - for u in @users do
         li.menu.close-panel
-          a.detail href="/#{u.username}" onclick=""
+          a.detail href="/#{u.username}"
             = image_tag u.profile_image_url, class: "image", size: "20x20"
             span.name #{u.username}
 
@@ -23,14 +28,27 @@
         li
           = image_tag current_user.profile_image_url, size: "25x25"
           = link_to current_user.username, "/#{current_user.username}"
+        li.user_profile
+          p #{current_user.name}
+          p.small #{current_user.description}
+        /- if current_user.back_number
+          /.uniform
+            /.name #{current_user.koiho_name}
+            /.number class="n#{current_user.back_number[0]}"
+            /.number class="n#{current_user.back_number[1]}"
+        /li
+          /form method="get" action="/users/back"
+            /input name="koiho_name" placeholder="ローマ字" value="#{current_user.koiho_name}"
+            /input name="back_number" placeholder="背番号" value="#{current_user.back_number}"
+            /input type="submit"
         li
-          = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "external"
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
       - else
         li
-          = image_tag "twitter.png", size: "30x30"
-          = link_to "ログイン", user_omniauth_authorize_path(:twitter), class: "external"
-      - unless signed_in?
-        p.side こいほードットコムは、動画でつながるカープファン専用SNSです。Twitterアカウントのみでログインができます。アカウント連携により、許可なくツイートがされることは一切ありませんのでご安心ください。
+          a href="#{user_omniauth_authorize_path(:twitter)}"
+            = image_tag "twitter.png", size: "30x30"
+            span ログイン
+            p.side こいほードットコムは、動画でつながるカープファン専用SNSです。Twitterアカウントのみでログインができます。
 
 .views
   .view.view-main
@@ -60,7 +78,9 @@
             .content-block.searchbar-not-found 見つかりませんでした
             .list-block.media-list.list-block-search.searchbar-found
               - if @user
-                p.title こいほーした動画
+                p.title
+                  = image_tag @profile_image, size: "30x30"
+                  span のお気に入り動画
               ul
                 - for v in @videos do
                   li
@@ -69,6 +89,6 @@
                         = image_tag "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg", size: "80x80"
                       .item-inner
                         .item-title-row
-                          .span #{v.title} 
+                          .span.item-title #{v.title} 
 
                         .item-text #{v.like}人がこいほーしています。 

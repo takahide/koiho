@@ -10,7 +10,7 @@ class TopController < ApplicationController
 
       updated_at = Time.parse(current_user.updated_at.to_s)
       now = Time.now
-      if now - updated_at > 10000 || current_user.profile_image_url.nil?
+      if now - updated_at > 99999999999 || current_user.profile_image_url.nil?
         user = twitter.user(current_user.username)
         User.update current_user.id, profile_image_url: user.profile_image_url.to_s, name: user.name, location: user.location, description: user.description, friends_count: user.friends_count, followers_count: user.followers_count
       end
@@ -31,6 +31,7 @@ class TopController < ApplicationController
         @videos.push Video.find(l.video_id)
       end
       @title = "@#{username}"
+      @profile_image = user.profile_image_url
       @user = true
     else
       @videos = Video.all

@@ -34,6 +34,8 @@ class VideosController < ApplicationController
     html = open("https://www.youtube.com/watch?v=#{@video.youtube_id}").read
     doc = Nokogiri::HTML(html.toutf8, nil, 'utf-8')
     @video.title = doc.css("#eow-title").text.squish
+    @video.like = 0
+    @video.dislike = 0
 
     respond_to do |format|
       if @video.save
