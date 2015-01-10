@@ -1,18 +1,15 @@
 Threeout::Application.routes.draw do
-  resources :comments
   resources :videos
-  resources :posts
 
   devise_for :users, path_names: { sign_in: "login", sign_out: "logout"}, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
   get '/', to: 'top#show'
+  get '/count_likes', to: 'likes#count_likes'
   get '/v/:youtube_id', to: 'top#show'
   get '/like/:video_id', to: "likes#create"
   get '/who/:video_id', to: "likes#who"
   get '/users/back', to: "users#back"
-  resources :questions
   resources :videos
-  resources :comments
 
   get '/secret', to: 'users#secret'
   get '/secret2/:username', to: 'users#secret2'
@@ -20,7 +17,6 @@ Threeout::Application.routes.draw do
   get '/secret2/:username', to: 'users#secret2'
 
   get '/:username', to: 'top#show'
-  get '/:username/:youtube_id', to: 'top#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

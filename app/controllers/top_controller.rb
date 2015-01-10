@@ -16,25 +16,30 @@ class TopController < ApplicationController
       end
     end
 
-
     username = params[:username]
     youtube_id = params[:youtube_id]
     if youtube_id
-      featured_video = Video.find_by_youtube_id youtube_id
-      @featured_video_html = '<iframe width="100%" height="200" src="//www.youtube.com/embed/' + featured_video.youtube_id  + '" frameborder="0" allowfullscreen></iframe>'
+      @featured_video = Video.find_by_youtube_id youtube_id
+      @featured_video_html = '<iframe width="100%" height="200" src="//www.youtube.com/embed/' + @featured_video.youtube_id  + '" frameborder="0" allowfullscreen></iframe>'
     end
     if username
       user = User.find_by_username username
+      if user.nil?
+        redirect_to "/"
+        return
+      end
       likes = Like.where user_id: user.id
       @videos = Array.new
       for l in likes
         @videos.push Video.find(l.video_id)
       end
+      @videos.sort! {|v1, v2| v2.like <=> v1.like }
       @title = "@#{username}"
       @profile_image = user.profile_image_url
       @user = true
     else
       @videos = Video.all
+      @videos.sort! {|v1, v2| v2.like <=> v1.like }
       @title = "人気の動画"
       @user = false
     end

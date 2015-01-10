@@ -19,3 +19,6 @@ $ ->
   $(document).on "click ", ".close-popup", ->
     username = $(".nav-title").text().split("@")[1] || ""
     window.history.pushState(null, null, "/#{username}");
+
+  $(document).on "click", ".twitter-login", ->
+    myApp.showPreloader('Twitterに接続中')

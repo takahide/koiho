@@ -222,7 +222,7 @@ body {
 
 .side {
   margin-top: 15px;
-  color: #999;
+  color: #fff;
 }
 
 .item-media {
@@ -254,6 +254,18 @@ body {
     margin-top: 5px;
     font-size: 90%;
   }
+}
+
+.fan-title {
+  margin-top: 15px;
+  margin-left: 5px;
+  padding: 2px;
+  background: #444;
+  color: #fff;
+}
+
+.login-button {
+  margin: 10px;
 }
 
 @-webkit-keyframes bar {

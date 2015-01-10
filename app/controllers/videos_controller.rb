@@ -9,6 +9,10 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
+    if current_user.nil? || current_user.username != "carp_joshi"
+      redirect_to '/'
+      return
+    end
     @videos = Video.all
   end
 
@@ -19,16 +23,28 @@ class VideosController < ApplicationController
 
   # GET /videos/new
   def new
+    if current_user.nil? || current_user.username != "carp_joshi"
+      redirect_to '/'
+      return
+    end
     @video = Video.new
   end
 
   # GET /videos/1/edit
   def edit
+    if current_user.nil? || current_user.username != "carp_joshi"
+      redirect_to '/'
+      return
+    end
   end
 
   # POST /videos
   # POST /videos.json
   def create
+    if current_user.nil? || current_user.username != "carp_joshi"
+      redirect_to '/'
+      return
+    end
     @video = Video.new(video_params)
 
     html = open("https://www.youtube.com/watch?v=#{@video.youtube_id}").read
@@ -51,6 +67,10 @@ class VideosController < ApplicationController
   # PATCH/PUT /videos/1
   # PATCH/PUT /videos/1.json
   def update
+    if current_user.nil? || current_user.username != "carp_joshi"
+      redirect_to '/'
+      return
+    end
     respond_to do |format|
       if @video.update(video_params)
         format.html { redirect_to @video, notice: 'Video was successfully updated.' }
@@ -65,6 +85,10 @@ class VideosController < ApplicationController
   # DELETE /videos/1
   # DELETE /videos/1.json
   def destroy
+    if current_user.nil? || current_user.username != "carp_joshi"
+      redirect_to '/'
+      return
+    end
     @video.destroy
     respond_to do |format|
       format.html { redirect_to videos_url }

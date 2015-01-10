@@ -1,4 +1,12 @@
 class LikesController < ApplicationController
+  def count_likes
+    videos = Video.all
+    for v in videos
+      likes = Like.where video_id: v.id
+      v.like = likes.size
+      v.save
+    end
+  end
   def create
     authenticate_user!
     user_id = current_user.id
@@ -14,7 +22,7 @@ class LikesController < ApplicationController
     if signed_in?
       before = "<a class='button button-fill button-big color-red like koiho' data-method='GET' data-remote='true' data-type='html' data-update='.like-area' href='/like/#{video_id}'>この動画にこいほーする</a>"
     else
-      before = "<a class='button button-fill button-big color-red like' href='/users/auth/twitter' onclick=\"alert('こいほーするには、Twitterログインが必要です。');\">この動画にこいほーする</a>"
+      before = "<a class='button button-fill button-big color-red like close-popup open-panel' onclick=''>この動画にこいほーする</a>"
     end
     after = "<a class='button button-fill button-big color-gray like close-popup'>こいほー済み</a>"
     if user_signed_in?

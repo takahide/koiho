@@ -10,6 +10,15 @@
 .panel.panel-left.panel-reveal
   .content-block
     ul.menu
+      - unless signed_in?
+        = image_tag "koiho.png", width: "240"
+        li
+          a.twitter-login href="#{user_omniauth_authorize_path(:twitter)}"
+            p.side こいほードットコムは、動画でつながるカープファン専用SNSです。動画のお気に入り登録（こいほー）やマイリストの作成には、Twitterアカウントでのログインが必要です。
+            .login-button
+              = image_tag "twitter.png", size: "30x30"
+              span ログイン
+      p.fan-title 利用中のカープファン
       - if @user
         li.menu.close-panel
           a.detail href="/"
@@ -43,12 +52,6 @@
             /input type="submit"
         li
           = link_to "ログアウト", destroy_user_session_path, method: :delete
-      - else
-        li
-          a href="#{user_omniauth_authorize_path(:twitter)}"
-            = image_tag "twitter.png", size: "30x30"
-            span ログイン
-            p.side こいほードットコムは、動画でつながるカープファン専用SNSです。Twitterアカウントのみでログインができます。
 
 .views
   .view.view-main
@@ -58,9 +61,7 @@
           a.link.open-panel href="#" ファン
         .center.sliding.nav-title = @title
         .right
-          - unless signed_in?
-            a.link.open-panel href="#" data-panel="right" 登録
-          - else
+          - if signed_in?
             a.link.open-panel href="#" data-panel="right" 編集
     .pages.navbar-through.toolbar-through
       .view-cover style="position: absolute; top: 0; left: 0; width: 100%; height: 2000px; background: rgba(255, 255, 255, 1); z-index:10000; display: none;"
@@ -72,23 +73,31 @@
           a.searchbar-cancel href="#" キャンセル
         .searchbar-overlay
         .page-content#top
-          .right
-          .left
-            .featured_video = raw(@featured_video_html)
-            .content-block.searchbar-not-found 見つかりませんでした
-            .list-block.media-list.list-block-search.searchbar-found
-              - if @user
-                p.title
-                  = image_tag @profile_image, size: "30x30"
-                  span のお気に入り動画
-              ul
-                - for v in @videos do
-                  li
-                    a.item-link.item-content.open-popup.video-post data-method="GET" data-remote="true" data-type="html" data-update=".like-area" href="/who/#{v.id}" youtube-id="#{v.youtube_id}"
-                      .item-media
-                        = image_tag "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg", size: "80x80"
-                      .item-inner
-                        .item-title-row
-                          .span.item-title #{v.title} 
+          .featured_video = raw(@featured_video_html)
+          .content-block.searchbar-not-found 見つかりませんでした
+          .list-block.media-list.list-block-search.searchbar-found
+            - if @user
+              p.title
+                = image_tag @profile_image, size: "30x30"
+                span のお気に入り動画
+            ul
+              - if @featured_video
+                li
+                  a.item-link.item-content.open-popup.video-post data-method="GET" data-remote="true" data-type="html" data-update=".like-area" href="/who/#{@featured_video.id}" youtube-id="#{@featured_video.youtube_id}"
+                    .item-media
+                      = image_tag "http://img.youtube.com/vi/#{@featured_video.youtube_id}/1.jpg", size: "80x80"
+                    .item-inner
+                      .item-title-row
+                        .span.item-title #{@featured_video.title} 
 
-                        .item-text #{v.like}人がこいほーしています。 
+                      .item-text #{@featured_video.like}人がこいほーしています。 
+              - for v in @videos do
+                li
+                  a.item-link.item-content.open-popup.video-post data-method="GET" data-remote="true" data-type="html" data-update=".like-area" href="/who/#{v.id}" youtube-id="#{v.youtube_id}"
+                    .item-media
+                      = image_tag "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg", size: "80x80"
+                    .item-inner
+                      .item-title-row
+                        .span.item-title #{v.title} 
+
+                      .item-text #{v.like}人がこいほーしています。 
